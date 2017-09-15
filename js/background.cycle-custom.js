@@ -1,0 +1,1 @@
+// JavaScript Documentvar fadeShow = $(".background").fadeShow({	correctRatio: true,	shuffle: true,	speed: 5000,	images: ['http://ow9i18jhg.bkt.clouddn.com/pt/bg1.jpg',		     'http://ow9i18jhg.bkt.clouddn.com/pt/bg2.jpg',			 'http://ow9i18jhg.bkt.clouddn.com/pt/bg3.jpg']});
