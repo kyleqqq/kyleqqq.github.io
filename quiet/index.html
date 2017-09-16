@@ -3,6 +3,11 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+    <meta name="format-detection" content="telephone=no,email=no"/>
+
     <title>安静找自己 - 我的心灵归属地 - iKathyian</title>
     <script type="text/javascript" src="https://cdn.staticfile.org/jquery/1.11.3/jquery.min.js"></script>
     <style>
@@ -97,48 +102,6 @@
             text-decoration: none;
         }
     </style>
-    <script type="text/javascript">
-        $(function(){
-            $("#music").html('<embed src="http://ow9i18jhg.bkt.clouddn.com/pt/quiet.swf" autostart="true" loop="true" hidden="true"></embed>');
-            $(document).keyup(function(event){
-                if(event.keyCode == 32){
-                    quietrun();
-                }
-            });
-            $(document).mousedown(function(){
-                quietrun();
-            });
-        })
-
-        var  stopindex=0;
-        var  runflg=true;
-        function quietrun(){
-            if($(".current").attr("id")=="last"){
-                return false;
-            }
-
-            if($(".current").attr("id")=="relax"){
-                if(runflg){
-                    stopindex = setInterval(changeTime,1000);
-                    runflg=false;
-                }
-            }else{
-                $(".current").next().addClass("current");
-                $(".current").first().removeClass("current");
-            }
-
-        }
-        function changeTime(){
-            index =  parseInt($("#time").html());
-            if(index<=1){
-                clearInterval(stopindex);
-                $(".current").next().addClass("current");
-                $(".current").first().removeClass("current");
-            }else{
-                $(".time").html(index-1);
-            }
-        }
-    </script>
 </head>
 <body id="body">
 <div id="music"></div>
@@ -150,7 +113,7 @@
         <div>为了获得完整的体验，请把你的手机设置成静音模式，把电脑静音，然后按[F11]键，苹果机按[cmd+shift+f]键<span>
                         (同样，按[空格]键继续。)</span></div>
         <div>说真的，请静音你的手机。否则，我们做的毫无意义。<span>(请严肃。请严肃，请严肃。不要担心 - 这里不是一个像那些会吓你一跳的地方。)</span></div>
-        <div id="music" itemprop="name">欢迎来到这安静的地方。</div>
+        <div itemprop="name">欢迎来到这安静的地方。</div>
         <div>在这安静的地方，没有领导和上级<span>(没有他们冲你的大呼小叫)</span></div>
         <div>也没有人人网的信息...</div>
         <div>...或微博...</div>
@@ -221,5 +184,65 @@
     </div>
 </div>
 <p id="op_result"></p>
+<script type="text/javascript">
+    $(function(){
+        $("#music").html('<audio id="audio" src="http://ow9i18jhg.bkt.clouddn.com/pt/quiet.mp3" style="opacity:0" preload="auto" controls loop hidden="true"></audio>');
+        $(document).keyup(function(event){
+            if(event.keyCode == 32){
+                quietrun();
+            }
+        });
+        $(document).mousedown(function(){
+            quietrun();
+        });
+    });
+    var  stopindex=0;
+    var  runflg=true;
+    function quietrun(){
+        if($(".current").attr("id")=="last"){
+            return false;
+        }
+
+        if($(".current").attr("id")=="relax"){
+            if(runflg){
+                stopindex = setInterval(changeTime,1000);
+                runflg=false;
+            }
+        }else{
+            $(".current").next().addClass("current");
+            $(".current").first().removeClass("current");
+        }
+
+    }
+    function changeTime(){
+        index =  parseInt($("#time").html());
+        if(index<=1){
+            clearInterval(stopindex);
+            $(".current").next().addClass("current");
+            $(".current").first().removeClass("current");
+        }else{
+            $(".time").html(index-1);
+        }
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+        function audioAutoPlay() {
+            var audio = document.getElementById('audio');
+            audio.play();
+            document.addEventListener("WeixinJSBridgeReady", function () {
+                audio.play();
+            }, false);
+        }
+        audioAutoPlay();
+    });
+    //--创建触摸监听，当浏览器打开页面时，触摸屏幕触发事件，进行音频播放
+    document.addEventListener('touchstart', function () {
+        function audioAutoPlay() {
+            var audio = document.getElementById('audio');
+            audio.play();
+        }
+        audioAutoPlay();
+    });
+</script>
 </body>
 </html>
