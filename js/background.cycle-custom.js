@@ -1,1 +1,1 @@
-// JavaScript Documentvar fadeShow = $(".background").fadeShow({	correctRatio: true,	shuffle: true,	speed: 3000,	images: [		'http://ow9i18jhg.bkt.clouddn.com/pt/bg5.jpg'	]});
+// JavaScript Documentvar fadeShow = $(".background").fadeShow({	correctRatio: true,	shuffle: true,	speed: 5000,	images: [		'http://ow9i18jhg.bkt.clouddn.com/pt/bg5.jpg',		'http://ow9i18jhg.bkt.clouddn.com/pt/q1.jpg',		'http://ow9i18jhg.bkt.clouddn.com/pt/q3.jpg',		'http://ow9i18jhg.bkt.clouddn.com/pt/q2.jpg'	]});
